@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_02_001347) do
+ActiveRecord::Schema.define(version: 2022_06_02_154758) do
 
   create_table "listings", force: :cascade do |t|
     t.integer "owner_id"
@@ -48,6 +48,20 @@ ActiveRecord::Schema.define(version: 2022_06_02_001347) do
     t.string "satellite_url"
     t.integer "num_watching"
     t.integer "visibility"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "email"
+    t.string "password_digest"
+    t.integer "phone_num"
+    t.integer "firm_id"
+    t.integer "school_id"
+    t.integer "city_id"
+    t.integer "neighborhood_id"
+    t.integer "building_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
