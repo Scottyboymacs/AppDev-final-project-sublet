@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  # Routes for general website nav:
+  get("/", { :controller => "application", :action => "home" })
+  get("/find_sublet", { :controller => "application", :action => "find" })
+  get("/post_sublet", { :controller => "application", :action => "post" })
+
 
 
   # Routes for the Region resource:
