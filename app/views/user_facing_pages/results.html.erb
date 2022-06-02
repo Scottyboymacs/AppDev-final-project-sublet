@@ -65,32 +65,71 @@ Take a look!  Which one seems right?
     </th>
   </tr>
     <tr>
-    <th>
+    <td>
       <%= start_date %>
-    </th>
-    <th>
+    </td>
+    <td>
       <%= end_date %>
-    </th>
-    <th>
+    </td>
+    <td>
       <%=Region.where( :id == region_id).first.name %>
-    </th>
-    <th>
+    </td>
+    <td>
       <%=State.where( :id == state_id).first.name %>
-    </th>
-    <th>
+    </td>
+    <td>
       <%=City.where( :id == city_id).first.name %>
-    </th>
-    <th>
+    </td>
+    <td>
       <%=School.where( :id == school_id).first.name %>
-    </th>
-    <th>
+    </td>
+    <td>
       <%=Firm.where( :id == firm_id).first.name %>
+    </td>
+    <td>
+      <%= location %>
+    </td>
+  </tr>
+</table>
+<hr>
+
+<h3 {text-align: center;}>
+Available Listings
+</h3>
+
+<table border="1">
+  <tr>
+    <th>
+      Listing Name
     </th>
     <th>
-      <%= location %> via <%= trans_method %>
+      Owner
+    </th>
+    <th>
+      Address
+    </th>
+    <th>
+      # Beds
+    </th>
+    <th>
+      # Baths
+    </th>
+    <th>
+      Whole apt?
+    </th>
+    <th>
+      Pet Friendly?
+    </th>
+    <th>
+      Furnished?
+    </th>
+    <th>
+      Smoking?
+    </th>
+    <th>
+      Gender Preference
     </th>
   </tr>
-<hr>
 
 <% @list_of_listings.each do |listing| %>
 <%  
@@ -100,6 +139,64 @@ Take a look!  Which one seems right?
        listing.first.school_id == (school_id || nil) &&
        listing.first.firm_id == (firm_id || nil) &&
 %>
-
-
+  <tr>
+    <td>
+      <%=listing.name %>
+    </td>
+    <td>
+      <%=listing.address %>
+    </td>
+    <td>
+      <%=listing.num_beds %>
+    </td>
+    <td>
+      <%=listing.num_baths %>
+    </td>
+    <td>
+      <%=listing.num_rooms %> (need to make a Y/N value instead of number of rooms)
+    </td>
+    <td>
+      <% if listing.pets
+            pets = "Yes!" 
+          else
+            pets = "Nope"
+          end
+        %>
+        <%= pets %>
+    </td>
+    <td>
+      <% if listing.furnished
+            furnished = "Yep" 
+          else
+            furnished = "Nah"
+          end
+        %>   
+      <%= furnished %>
+ 
+    </td>
+    <td>
+      <%= if listing.smoking
+            smoking = "Sure" 
+          else
+            smoking = "No-no-no"
+          end
+        %>  
+      <%= smoking %> 
+    </td>
+    <td>
+      <%= if listing.gender_pref == 1
+            gender = "None" 
+          elsif listing.gender_pref == 2
+            gender = "Female"
+          elsif listing.gender_pref == 3
+            gender = "Male"
+          elsif listing.gender_pref == 4
+            gender = "Other"
+          end
+        %>   
+      <%= gender %> 
+    </td>
+  </tr>
 <% end %>
+<% end %>
+</table>
