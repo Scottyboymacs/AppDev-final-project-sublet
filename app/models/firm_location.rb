@@ -1,0 +1,2 @@
+class FirmLocation < ApplicationRecord
+end

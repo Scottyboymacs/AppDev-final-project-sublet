@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_02_154758) do
+ActiveRecord::Schema.define(version: 2022_06_02_155002) do
 
   create_table "listings", force: :cascade do |t|
     t.integer "owner_id"
@@ -48,6 +48,15 @@ ActiveRecord::Schema.define(version: 2022_06_02_154758) do
     t.string "satellite_url"
     t.integer "num_watching"
     t.integer "visibility"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "receiver_id"
+    t.integer "listing_id"
+    t.string "copy"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,0 +1,134 @@
+<div>
+  <div>
+    <h1>
+      List of all neighborhoods
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new neighborhood
+    </h2>
+
+    <form action="/insert_neighborhood" method="post">
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name">
+      </div>
+
+      <div>
+        <label for="region_id_box">
+          Region
+        </label>
+
+        <input type="text" id="region_id_box" name="query_region_id">
+      </div>
+
+      <div>
+        <label for="state_id_box">
+          State
+        </label>
+
+        <input type="text" id="state_id_box" name="query_state_id">
+      </div>
+
+      <div>
+        <label for="city_id_box">
+          City
+        </label>
+
+        <input type="text" id="city_id_box" name="query_city_id">
+      </div>
+
+      <button>
+        Create neighborhood
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Region
+        </th>
+
+        <th>
+          State
+        </th>
+
+        <th>
+          City
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_neighborhoods.each do |a_neighborhood| %>
+      <tr>
+        <td>
+          <%= a_neighborhood.id %>
+        </td>
+
+        <td>
+          <%= a_neighborhood.name %>
+        </td>
+
+        <td>
+          <%= a_neighborhood.region_id %>
+        </td>
+
+        <td>
+          <%= a_neighborhood.state_id %>
+        </td>
+
+        <td>
+          <%= a_neighborhood.city_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_neighborhood.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_neighborhood.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/neighborhoods/<%= a_neighborhood.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

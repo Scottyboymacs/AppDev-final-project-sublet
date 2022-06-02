@@ -1,0 +1,116 @@
+<div>
+  <div>
+    <h1>
+      Firm location #<%= @the_firm_location.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/firm_locations">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_firm_location/<%= @the_firm_location.id %>">
+          Delete firm location
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Firm
+      </dt>
+      <dd>
+        <%= @the_firm_location.firm_id %>
+      </dd>
+
+      <dt>
+        Region
+      </dt>
+      <dd>
+        <%= @the_firm_location.region_id %>
+      </dd>
+
+      <dt>
+        State
+      </dt>
+      <dd>
+        <%= @the_firm_location.state_id %>
+      </dd>
+
+      <dt>
+        City
+      </dt>
+      <dd>
+        <%= @the_firm_location.city_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_firm_location.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_firm_location.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit firm location
+    </h2>
+
+    <form action="/modify_firm_location/<%= @the_firm_location.id %>"  method="post" >
+      <div>
+        <label for="firm_id_box">
+          Firm
+        </label>
+
+        <input type="text" id="firm_id_box" name="query_firm_id" value="<%= @the_firm_location.firm_id %>">
+      </div>
+
+      <div>
+        <label for="region_id_box">
+          Region
+        </label>
+
+        <input type="text" id="region_id_box" name="query_region_id" value="<%= @the_firm_location.region_id %>">
+      </div>
+
+      <div>
+        <label for="state_id_box">
+          State
+        </label>
+
+        <input type="text" id="state_id_box" name="query_state_id" value="<%= @the_firm_location.state_id %>">
+      </div>
+
+      <div>
+        <label for="city_id_box">
+          City
+        </label>
+
+        <input type="text" id="city_id_box" name="query_city_id" value="<%= @the_firm_location.city_id %>">
+      </div>
+
+      <button>
+        Update firm location
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
