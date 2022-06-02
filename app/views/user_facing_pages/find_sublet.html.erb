@@ -10,12 +10,27 @@ Where are you going?
 
 <form action="/search_sublets" method="post">
   <div>
+    <label for="start_date_box">
+      Start Date:
+    </label>
+    <input placeholder="Enter a start date" type="date" id="start_date_box" name="query_start_date"></textarea>
+  </div>
+    <div>
+    <label for="end_date_box">
+      End Date:
+    </label>
+    <input placeholder="Enter a start date" type="date" id="end_date_box" name="query_end_date"></textarea>
+  </div>
+  <div>
     <label for="region_id_box">
       Region:
     </label>
     <select id="region_id_box" name="query_region_id">
-      <option value= <%=Region.first.name%>>
+      <option value= <%=Region.first.id%>>
         <%=Region.first.name%>
+      </option>
+      <option value= <%=nil%>>
+        --
       </option>
     </select>
   </div>
@@ -25,8 +40,11 @@ Where are you going?
       State:
     </label>
     <select id="state_id_box" name="query_state_id">
-      <option value= <%=State.first.name%>>
+      <option value= <%=State.first.id%>>
         <%=State.first.name%>
+      </option>
+      <option value= <%=nil%>>
+        --
       </option>
     </select>
   </div>
@@ -36,8 +54,11 @@ Where are you going?
       City:
     </label>
     <select id="city_id_box" name="query_city_id">
-      <option value= <%=City.first.name%>>
+      <option value= <%=City.first.id%>>
         <%=City.first.name%>
+      </option>
+      <option value= <%=nil%>>
+        --
       </option>
     </select>
   </div>
@@ -47,8 +68,11 @@ Where are you going?
       School:
     </label>
     <select id="school_id_box" name="query_school_id">
-      <option value= <%=School.first.name%>>
+      <option value= <%=School.first.id%>>
         <%=School.first.name%>
+      </option>
+      <option value= <%=nil%>>
+        --
       </option>
     </select>
   </div>
@@ -58,30 +82,40 @@ Where are you going?
       Firm:
     </label>
     <select id="firm_id_box" name="query_firm_id">
-      <option value= <%=Firm.first.name%>>
+      <option value= <%=Firm.first.id%>>
         <%=Firm.first.name%>
+      </option>
+      <option value= <%=nil%>>
+        --
       </option>
     </select>
   </div>
 
   <div>
-    <label for="location_box">
-      Distance from:
+    <label for="cost_box">
+      Weekly Rent Cost: $
     </label>
-    <input placeholder="Address" id="location_box" name="query_location"></textarea>
-
-    <label for="trans_method_box">
-      Via:
-    </label>
-    <select id="trans_method_box" name="trans_method">
-      <% @trans_methods.each do |method| %>
-        <option value= <%=method%>>
-          <%=method%>
-        </option>
-      <%end%>
-    </select>
+    <input placeholder="Enter a positive integer value" type="numer" id="cost_box" name="query_cost"  min="0"></textarea>
   </div>
-
+<br>
+  <div>
+    <label for="location_box">
+      Shortest distance from:
+    </label>
+    <input placeholder="Address" type="text" id="location_box" name="query_location"></textarea>
+  </div>
+  <div>
+      Via:
+  </div>
+  <div>
+    <% @trans_methods.each do |method| %>
+      <input type="radio" id="trans_method_box"  name="query_trans_method" value=<%=method%>>
+        <label for="trans_method_box">
+          <%=method%>
+        </label>
+      <br>
+    <%end%>
+  </div>
   <button>
     Search!
   </button>

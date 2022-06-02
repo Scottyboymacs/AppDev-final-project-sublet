@@ -1,1 +1,105 @@
-Hello for the Third time
+<h1>
+Results
+</h1>
+
+<h3>
+Take a look!  Which one seems right?
+</h3>
+
+<% start_date = params.fetch("query_start_date") %>
+<% end_date = params.fetch("query_end_date") %>
+<% region_id = params.fetch("query_region_id") %>
+<% state_id = params.fetch("query_state_id") %>
+<% city_id = params.fetch("query_city_id") %>
+<% school_id = params.fetch("query_school_id") %>
+<% firm_id = params.fetch("query_firm_id") %>
+<% location = params.fetch("query_location") %>
+<% trans_method = params.fetch("query_trans_method") %>
+
+<% 
+# need to create a list of results in order to work the distance from piece... 
+# we will need to add <distance x> value to <listing x> hash so we can sort the listings by the distances
+# if there is no distance value or address value, we give <distance x> "nil" value, then, when we order the 
+# <@list_of_listings> by ascending value of <distance x> everything will have the nil value as x 
+# and the list order will not change  
+
+# travel_times = []
+# @list of listings.each do |listing|
+# i+=1
+# travel_times[i] = <location> time to <listing.address> via googlemaps API 
+# end
+# listings with distance = {}
+
+# What we need to do is find a way to add travel_time[i] as an attribute to each 
+# "listing" hash stored in the list "@list of listings"
+%>
+<hr>
+<h4>
+  Search Parameters:
+</h4>
+<table border="1">
+  <tr>
+    <th>
+      Start
+    </th>
+    <th>
+      End
+    </th>
+    <th>
+      Region
+    </th>
+    <th>
+      State
+    </th>
+    <th>
+      City
+    </th>
+    <th>
+      School
+    </th>
+    <th>
+      Firm
+    </th>
+    <th>
+      Close to...
+    </th>
+  </tr>
+    <tr>
+    <th>
+      <%= start_date %>
+    </th>
+    <th>
+      <%= end_date %>
+    </th>
+    <th>
+      <%=Region.where( :id == region_id).first.name %>
+    </th>
+    <th>
+      <%=State.where( :id == state_id).first.name %>
+    </th>
+    <th>
+      <%=City.where( :id == city_id).first.name %>
+    </th>
+    <th>
+      <%=School.where( :id == school_id).first.name %>
+    </th>
+    <th>
+      <%=Firm.where( :id == firm_id).first.name %>
+    </th>
+    <th>
+      <%= location %> via <%= trans_method %>
+    </th>
+  </tr>
+<hr>
+
+<% @list_of_listings.each do |listing| %>
+<%  
+    if listing.first.region_id == (region_id || nil) && 
+       listing.first.state_id == (state_id || nil) && 
+       listing.first.city_id == (city_id || nil) &&
+       listing.first.school_id == (school_id || nil) &&
+       listing.first.firm_id == (firm_id || nil) &&
+%>
+
+
+<% end %>
