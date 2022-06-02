@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   end
 
   def find
+    @trans_methods = ["Car", "Public Trans", "Bike", "Walk"]
     render({ :template => "user_facing_pages/find_sublet.html.erb" })
   end
 

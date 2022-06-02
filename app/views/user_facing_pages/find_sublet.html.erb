@@ -7,27 +7,82 @@ Where are you going?
 </h3>
 
 <p> Specify any number of search criteria:</p>
-<div> Region:
-<strong style="color:DodgerBlue;"> insert drop-down list here</strong>
-</div>
-<br>
-<div> State: 
-<strong style="color:DodgerBlue;"> insert drop-down list here</strong>
-</div>
-<br>
-<div> City: 
-<strong style="color:DodgerBlue;"> insert drop-down list here</strong>
-</div>
-<br>
-<div> Firm: 
-<strong style="color:DodgerBlue;"> insert drop-down list here</strong>
-</div>
-<br>
-<div> School: 
-<strong style="color:DodgerBlue;"> insert drop-down list here</strong>
-</div>
-<br>
-<div> Distance from somewhere: 
-<strong style="color:DodgerBlue;"> insert from for a user-defined string input for an address here</strong>
-<strong style="color:DarkSeaGreen;"> insert drop-down list or transportation methods here</strong>
-</div>
+
+<form action="/search_sublets" method="post">
+  <div>
+    <label for="region_id_box">
+      Region:
+    </label>
+    <select id="region_id_box" name="query_region_id">
+      <option value= <%=Region.first.name%>>
+        <%=Region.first.name%>
+      </option>
+    </select>
+  </div>
+  
+  <div>
+    <label for="state_id_box">
+      State:
+    </label>
+    <select id="state_id_box" name="query_state_id">
+      <option value= <%=State.first.name%>>
+        <%=State.first.name%>
+      </option>
+    </select>
+  </div>
+  
+  <div>
+    <label for="city_id_box">
+      City:
+    </label>
+    <select id="city_id_box" name="query_city_id">
+      <option value= <%=City.first.name%>>
+        <%=City.first.name%>
+      </option>
+    </select>
+  </div>
+  
+  <div>
+    <label for="school_id_box">
+      School:
+    </label>
+    <select id="school_id_box" name="query_school_id">
+      <option value= <%=School.first.name%>>
+        <%=School.first.name%>
+      </option>
+    </select>
+  </div>
+
+  <div>
+    <label for="firm_id_box">
+      Firm:
+    </label>
+    <select id="firm_id_box" name="query_firm_id">
+      <option value= <%=Firm.first.name%>>
+        <%=Firm.first.name%>
+      </option>
+    </select>
+  </div>
+
+  <div>
+    <label for="location_box">
+      Distance from:
+    </label>
+    <input placeholder="Address" id="location_box" name="query_location"></textarea>
+
+    <label for="trans_method_box">
+      Via:
+    </label>
+    <select id="trans_method_box" name="trans_method">
+      <% @trans_methods.each do |method| %>
+        <option value= <%=method%>>
+          <%=method%>
+        </option>
+      <%end%>
+    </select>
+  </div>
+
+  <button>
+    Search!
+  </button>
+</form>

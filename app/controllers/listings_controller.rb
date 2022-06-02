@@ -1,5 +1,14 @@
 class ListingsController < ApplicationController
-  def index
+  
+  def search
+    matching_listings = Listing.all
+
+    @list_of_listings = matching_listings.order({ :created_at => :desc })
+
+    render({ :template => "user_facing_pages/results.html.erb" })
+  end
+  
+    def index
     matching_listings = Listing.all
 
     @list_of_listings = matching_listings.order({ :created_at => :desc })
