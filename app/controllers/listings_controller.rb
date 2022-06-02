@@ -28,7 +28,7 @@ class ListingsController < ApplicationController
     the_listing.num_baths = params.fetch("query_num_baths")
     the_listing.num_rooms = params.fetch("query_num_rooms")
     the_listing.num_beds_offered = params.fetch("query_num_beds_offered")
-    the_listing.num_baths = params.fetch("query_num_baths")
+    the_listing.num_baths_offered = params.fetch("query_num_baths")
     the_listing.num_rooms_offered = params.fetch("query_num_rooms_offered")
     the_listing.region_id = params.fetch("query_region_id")
     the_listing.state_id = params.fetch("query_state_id")

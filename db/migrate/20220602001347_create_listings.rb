@@ -10,7 +10,7 @@ class CreateListings < ActiveRecord::Migration[6.0]
       t.integer :num_baths
       t.integer :num_rooms
       t.integer :num_beds_offered
-      t.offered :num_baths
+      t.integer :num_baths_offered
       t.integer :num_rooms_offered
       t.integer :region_id
       t.integer :state_id
@@ -24,7 +24,7 @@ class CreateListings < ActiveRecord::Migration[6.0]
       t.integer :sublease_category
       t.integer :gender_pref
       t.integer :floor
-      t.currency :rent
+      t.float :rent
       t.integer :dates_flex
       t.integer :start_flex_left
       t.integer :start_flex_right
