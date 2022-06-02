@@ -1,1 +1,77 @@
-hello again!
+<h1> Let's start with the basics </h1>
+
+<form action="/post_sublet" method="post">
+  <div>
+    <label for="start_date_box">
+      Start Date:
+    </label>
+    <input placeholder="Enter a start date" type="date" id="start_date_box" name="query_start_date"></textarea>
+  </div>
+  
+    <div>
+    <label for="end_date_box">
+      End Date:
+    </label>
+    <input placeholder="Enter a start date" type="date" id="end_date_box" name="query_end_date"></textarea>
+  </div>
+
+  <div>
+    <label for="region_id_box">
+      Region:
+    </label>
+    <select id="region_id_box" name="query_region_id">
+      <option value= <%=Region.first.id%>>
+        <%=Region.first.name%>
+      </option>
+      <option value= <%=nil%>>
+        --
+      </option>
+    </select>
+  </div>
+  
+  <div>
+    <label for="state_id_box">
+      State:
+    </label>
+    <select id="state_id_box" name="query_state_id">
+      <option value= <%=State.first.id%>>
+        <%=State.first.name%>
+      </option>
+    </select>
+  </div>
+  
+  <div>
+    <label for="city_box">
+      City:
+    </label>
+    <input placeholder="Watch your spelling :)" type="text" id="city_box" name="query_city"></textarea>
+  </div>
+  
+  <div>
+    <label for="school_name_box">
+      School:
+    </label>
+    <input placeholder="Watch your spelling :)" type="text" id="school_name_box" name="query_school_name"></textarea>
+  </div>
+
+  <div>
+    <label for="firm_name_box">
+      Firm:
+    </label>
+    <input placeholder="Please don't abbreviate!" type="text" id="firm_name_box" name="query_firm_name"></textarea>
+
+  </div>
+
+  <div>
+    <label for="cost_box">
+      Weekly Rent Price: $
+    </label>
+    <input placeholder="What are you planning to charge the subletter?" type="number" id="cost_box" name="query_cost"  min="0"></textarea>
+  </div>
+<br>
+  <div>
+    <label for="location_box">
+      Shortest distance from:
+    </label>
+    <input placeholder="Address" type="text" id="location_box" name="query_location" ></textarea>
+  </div>

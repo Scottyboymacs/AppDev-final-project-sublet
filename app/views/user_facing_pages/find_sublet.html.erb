@@ -8,7 +8,7 @@ Where are you going?
 
 <p> Specify any number of search criteria:</p>
 
-<form action="/search_sublets" method="post">
+<form action="/search_sublets" method="get">
   <div>
     <label for="start_date_box">
       Start Date:
@@ -26,12 +26,14 @@ Where are you going?
       Region:
     </label>
     <select id="region_id_box" name="query_region_id">
-      <option value= <%=Region.first.id%>>
-        <%=Region.first.name%>
-      </option>
-      <option value= <%=nil%>>
-        --
-      </option>
+        <option value= <%=nil%>>
+          --
+        </option>
+      <% Region.all.each do |region| %> 
+        <option value= <%=region.id%>>
+          <%=region.name%>
+        </option>
+      <%end%>
     </select>
   </div>
   
@@ -40,12 +42,14 @@ Where are you going?
       State:
     </label>
     <select id="state_id_box" name="query_state_id">
-      <option value= <%=State.first.id%>>
-        <%=State.first.name%>
-      </option>
-      <option value= <%=nil%>>
-        --
-      </option>
+        <option value= <%=nil%>>
+          --
+        </option>
+      <% State.all.each do |state| %> 
+        <option value= <%=state.id%>>
+          <%=state.name%>
+        </option>
+      <%end%>
     </select>
   </div>
   
@@ -54,12 +58,14 @@ Where are you going?
       City:
     </label>
     <select id="city_id_box" name="query_city_id">
-      <option value= <%=City.first.id%>>
-        <%=City.first.name%>
-      </option>
-      <option value= <%=nil%>>
-        --
-      </option>
+        <option value= <%=nil%>>
+          --
+        </option>
+      <% City.all.each do |city| %> 
+        <option value= <%=city.id%>>
+          <%=city.name%>
+        </option>
+      <%end%>
     </select>
   </div>
   
@@ -68,12 +74,14 @@ Where are you going?
       School:
     </label>
     <select id="school_id_box" name="query_school_id">
-      <option value= <%=School.first.id%>>
-        <%=School.first.name%>
-      </option>
-      <option value= <%=nil%>>
-        --
-      </option>
+        <option value= <%=nil%>>
+          --
+        </option>
+      <% School.all.each do |school| %> 
+        <option value= <%=school.id%>>
+          <%=school.name%>
+        </option>
+      <%end%>
     </select>
   </div>
 
@@ -82,12 +90,14 @@ Where are you going?
       Firm:
     </label>
     <select id="firm_id_box" name="query_firm_id">
-      <option value= <%=Firm.first.id%>>
-        <%=Firm.first.name%>
-      </option>
-      <option value= <%=nil%>>
-        --
-      </option>
+        <option value= <%=nil%>>
+          --
+        </option>
+      <% Firm.all.each do |firm| %> 
+        <option value= <%=firm.id%>>
+          <%=firm.name%>
+        </option>
+      <%end%>
     </select>
   </div>
 
@@ -105,16 +115,21 @@ Where are you going?
     <input placeholder="Address" type="text" id="location_box" name="query_location" ></textarea>
   </div>
   <div>
-      Via:
-  </div>
-  <div>
-    <% @trans_methods.each do |method| %>
-      <input type="radio" id="trans_method_box"  name="query_trans_method" value=<%=method%>>
-        <label for="trans_method_box">
-          <%=method%>
-        </label>
-      <br>
-    <%end%>
+      <label for="trans_method_box">
+        Via
+      </label>
+      <select id="trans_method_box" name="query_trans_method">
+        <option value= <%=nil%>>
+          --
+        </option>
+      <% @trans_methods.each do |movement| %> 
+        <option value= <%=movement%>>
+          <%=movement%>
+        </option>
+      <%end%>
+      </select>
+
+
   </div>
 
   <button>
