@@ -18,7 +18,7 @@
   </head>
 
   <body>
-  
+Welcome <%=User.where(:id => session.fetch(:user_id)).first.username%>
   <nav>
     <ul>
           <% if session[:user_id] == nil %>
@@ -37,7 +37,15 @@
     <li>
       <a href = "/user_sign_out">Sign Out</a>
     </li>
+    <li>
+      <a href = "/user_listings/<%= session[:user_id] %>">My Listings</a>
+    </li>
       <%end%>
+      <li>
+        <a href = "/listings">
+         All Listings 
+        </a>
+      </li>
       <li>
         <a href = "/">
          Home 

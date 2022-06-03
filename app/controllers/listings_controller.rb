@@ -1,4 +1,12 @@
 class ListingsController < ApplicationController
+
+  def own_listings
+    matching_listings = Listing.all
+
+    @list_of_listings = matching_listings.order({ :created_at => :desc })
+
+    render({ :template => "listings/my_listings.html.erb" })
+  end
   
   def search
     matching_listings = Listing.all
@@ -29,7 +37,7 @@ class ListingsController < ApplicationController
   def create
     the_listing = Listing.new
     the_listing.owner_id = params.fetch("query_owner_id")
-    the_listing.name = params.fetch("query_listing_name")
+    the_listing.name = session.fetch("query_listing_name")
     the_listing.open_date = params.fetch("query_open_date")
     the_listing.close_date = params.fetch("query_close_date")
     #the_listing.status = params.fetch("query_status", false)

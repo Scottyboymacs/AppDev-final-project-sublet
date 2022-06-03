@@ -6,6 +6,11 @@ Rails.application.routes.draw do
   get("/search_sublets", { :controller => "listings", :action => "search" })
   get("/initiate_sublet", { :controller => "application", :action => "initiate_sublet" })
   
+    # OWNED LISTINGS
+
+    get("/user_listings/:path_id", { :controller => "listings", :action => "" })
+
+  
     # SIGN UP FORM
 
     get("/user_sign_up", { :controller => "users", :action => "sign_up_form" })

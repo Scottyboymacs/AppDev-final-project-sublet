@@ -316,7 +316,7 @@
       </div>
 
       <div>
-        <input type="checkbox" id="status_box" name="query_status" value="1" <%= "checked" if @the_listing.status %>>
+        <input type="checkbox" id="status_box" name="query_status" value="1" >
 
         <label for="status_box">
             Status
@@ -532,35 +532,11 @@
       </div>
 
       <div>
-        <label for="map_url_box">
-          Map url
-        </label>
-
-        <input type="text" id="map_url_box" name="query_map_url" value="<%= @the_listing.map_url %>">
-      </div>
-
-      <div>
         <label for="website_url_box">
           Website url
         </label>
 
         <input type="text" id="website_url_box" name="query_website_url" value="<%= @the_listing.website_url %>">
-      </div>
-
-      <div>
-        <label for="satellite_url_box">
-          Satellite url
-        </label>
-
-        <input type="text" id="satellite_url_box" name="query_satellite_url" value="<%= @the_listing.satellite_url %>">
-      </div>
-
-      <div>
-        <label for="num_watching_box">
-          Num watching
-        </label>
-
-        <input type="text" id="num_watching_box" name="query_num_watching" value="<%= @the_listing.num_watching %>">
       </div>
 
       <div>

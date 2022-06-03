@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   
+  @current_user = User.where(:id => session[:user_id]).first
+
   def sign_in_form
     render({ :template => "users/sign_in.html.erb" })
   end
@@ -23,7 +25,7 @@ class UsersController < ApplicationController
       if are_they_legit == false
         redirect_to("/user_sign_in", { :alert => "Incorrect password." })
       else
-        session[:user_id] = user.id
+        session.store(:user_id, user.id)
       
         redirect_to("/", { :notice => "Signed in successfully." })
       end

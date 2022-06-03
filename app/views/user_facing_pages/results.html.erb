@@ -133,11 +133,11 @@ Available Listings
 
 <% @list_of_listings.each do |listing| %>
 <%  
-    if listing.first.region_id == (region_id || nil) && 
-       listing.first.state_id == (state_id || nil) && 
-       listing.first.city_id == (city_id || nil) &&
-       listing.first.school_id == (school_id || nil) &&
-       listing.first.firm_id == (firm_id || nil) &&
+    if listing.region_id == (region_id || nil) && 
+       listing.state_id == (state_id || nil) && 
+       listing.city_id == (city_id || nil) &&
+       listing.school_id == (school_id || nil) &&
+       listing.firm_id == (firm_id || nil) &&
 %>
   <tr>
     <td>

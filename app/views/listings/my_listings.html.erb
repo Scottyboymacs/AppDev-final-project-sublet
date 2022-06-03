@@ -1,0 +1,70 @@
+<h1> Your Listings <h1>
+
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          Name
+        </th>
+
+        <th>
+          Status
+        </th>
+
+        <th>
+          Address
+        </th>
+
+        <th>
+          Rent
+        </th>
+
+        <th>
+          Visibility
+        </th>
+        <th>
+          Created At
+        </th>
+        <th>
+          Updated At
+        </th>
+      </tr>
+
+      <% @list_of_listings.each do |listing| %>
+        <% if listing.user.id == session[:user_id] %>
+      <tr>
+        <td>
+          <a href="/listing/<%= @the_listing.id %>">
+            <%= listing.name %>
+          </a>
+        </td>
+        <td>
+          <%= listing.status %>
+        </td>
+        <td>
+          <%= listing.address %>
+        </td>
+        <td>
+          <%= listing.rent %>
+        </td>
+        <td>
+          <%= listing.visibility %>
+        </td>
+        <td>
+          <%= time_ago_in_words(listing.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(listing.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href= "/delete_listing/<%=listing.id%>">Delete Listing</a>
+        </td>
+      </tr>
+        <% end %>
+      <% end %>
+
+    </table>
+  </div>
+</div>
