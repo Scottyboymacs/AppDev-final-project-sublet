@@ -27,6 +27,8 @@ class User < ApplicationRecord
   has_many(:received_messages, { :class_name => "Message", :foreign_key => "receiver_id" })
   has_many(:sent_messages, { :class_name => "Message", :foreign_key => "sender_id" })
 
-
+  validates :email, :uniqueness => { :case_sensitive => false }
+  validates :email, :presence => true
+  has_secure_password
 
 end

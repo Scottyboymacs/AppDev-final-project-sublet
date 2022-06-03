@@ -4,7 +4,22 @@ Rails.application.routes.draw do
   get("/", { :controller => "application", :action => "home" })
   get("/find_sublet", { :controller => "application", :action => "find" })
   get("/search_sublets", { :controller => "listings", :action => "search" })
-  get("/initiate_sublet", { :controller => "application", :action => "initiate" })
+  get("/initiate_sublet", { :controller => "application", :action => "initiate_sublet" })
+  
+    # SIGN UP FORM
+
+    get("/user_sign_up", { :controller => "users", :action => "sign_up_form" })
+
+    # SIGN IN FORM
+    
+    get("/user_sign_in", { :controller => "users", :action => "sign_in_form" })
+    
+    # AUTHENTICATE AND STORE COOKIE
+    
+    post("/user_verify_credentials", { :controller => "users", :action => "create_cookie" })
+    
+    # SIGN OUT        
+    get("/user_sign_out", { :controller => "users", :action => "destroy_cookies" })
  
   # Routes for the Region resource:
 

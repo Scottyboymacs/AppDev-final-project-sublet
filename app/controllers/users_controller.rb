@@ -1,4 +1,43 @@
 class UsersController < ApplicationController
+  
+  def sign_in_form
+    render({ :template => "users/sign_in.html.erb" })
+  end
+
+  def sign_up_form
+    render({ :template => "users/new.html.erb" })
+  end
+    
+  def edit_profile_form
+    render({ :template => "users/edit_profile.html.erb" })
+  end
+
+  def create_cookie
+    user = User.where({ :email => params.fetch("query_email") }).first
+    
+    the_supplied_password = params.fetch("query_password")
+    
+    if user != nil
+      are_they_legit = user.authenticate(the_supplied_password)
+    
+      if are_they_legit == false
+        redirect_to("/user_sign_in", { :alert => "Incorrect password." })
+      else
+        session[:user_id] = user.id
+      
+        redirect_to("/", { :notice => "Signed in successfully." })
+      end
+    else
+      redirect_to("/user_sign_in", { :alert => "No user with that email address." })
+    end
+  end
+
+  def destroy_cookies
+    reset_session
+
+    redirect_to("/", { :notice => "Signed out successfully." })
+  end
+  
   def index
     matching_users = User.all
 
@@ -21,11 +60,12 @@ class UsersController < ApplicationController
     the_user = User.new
     the_user.username = params.fetch("query_username")
     the_user.email = params.fetch("query_email")
-    the_user.password_digest = params.fetch("query_password_digest")
+    the_user.password = params.fetch("query_password")
+    the_user.password_confirmation = params.fetch("query_password_confirmation")
     the_user.phone_num = params.fetch("query_phone_num")
-    the_user.firm_id = params.fetch("query_firm_id")
-    the_user.school_id = params.fetch("query_school_id")
-    the_user.city_id = params.fetch("query_city_id")
+    the_user.firm_id = Firm.where(:name => params.fetch("query_firm_name")).first.id
+    the_user.school_id = School.where(:name => params.fetch("query_school_name")).first.id
+    #the_user.city_id = City.where(:name => params.fetch("query_city_name")).first.id
     #the_user.neighborhood_id = params.fetch("query_neighborhood_id")
     #the_user.building_id = params.fetch("query_building_id")
 
@@ -66,47 +106,9 @@ class UsersController < ApplicationController
     the_user.destroy
 
     redirect_to("/users", { :notice => "User deleted successfully."} )
-
+  end
 
       # Uncomment line 72 here and line 4 in ApplicationController if you want to force users to sign in before any other actions.
   # skip_before_action(:force_user_sign_in, { :only => [:sign_up_form, :create, :sign_in_form, :create_cookie] })
 
-  def sign_in_form
-    render({ :template => "users/sign_in.html.erb" })
-  end
-
-  def create_cookie
-    user = User.where({ :email => params.fetch("query_email") }).first
-    
-    the_supplied_password = params.fetch("query_password")
-    
-    if user != nil
-      are_they_legit = user.authenticate(the_supplied_password)
-    
-      if are_they_legit == false
-        redirect_to("/user_sign_in", { :alert => "Incorrect password." })
-      else
-        session[:user_id] = user.id
-      
-        redirect_to("/", { :notice => "Signed in successfully." })
-      end
-    else
-      redirect_to("/user_sign_in", { :alert => "No user with that email address." })
-    end
-  end
-
-  def destroy_cookies
-    reset_session
-
-    redirect_to("/", { :notice => "Signed out successfully." })
-  end
-
-  def sign_up_form
-    render({ :template => "users/sign_up.html.erb" })
-  end
-    
-  def edit_profile_form
-    render({ :template => "users/edit_profile.html.erb" })
-  end
-  end
-end
+ end
