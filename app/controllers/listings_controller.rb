@@ -75,10 +75,18 @@ class ListingsController < ApplicationController
 
     if the_listing.valid?
       the_listing.save
-      redirect_to("/listings/#{the_listing.id}", { :notice => "Listing created successfully." })
+      redirect_to("/finalize_listing/#{the_listing.id}", { :notice => "Listing created successfully." })
     else
-      redirect_to("/initiate_sublet", { :alert => the_listing.errors.full_messages.to_sentence })
+      redirect_to("/initiate_listing", { :alert => the_listing.errors.full_messages.to_sentence })
     end
+  end
+
+  def edit_form
+    the_id = params.fetch("path_id")
+    matching_listings = Listing.where({ :id => the_id })
+    @the_listing = matching_listings.at(0)
+
+    render({ :template => "listings/edit.html.erb" })  
   end
 
   def update

@@ -12,7 +12,14 @@ class ApplicationController < ActionController::Base
     render({ :template => "user_facing_pages/find_sublet.html.erb" })
   end
 
-  def initiate_sublet
+  def initiate_listing_form
+    @visibility =  ["Private", "Fellow Students", "Work Colleagues", "Everyone"]
+    @y_or_n = [true, false]
+    @school_list = School.all.order(:name => :desc)
+    render({ :template => "listings/initiate.html.erb" })
+  end
+
+  def finalize_listing_form
     @visibility =  ["Private", "Fellow Students", "Work Colleagues", "Everyone"]
     @y_or_n = [true, false]
     @school_list = School.all.order(:name => :desc)

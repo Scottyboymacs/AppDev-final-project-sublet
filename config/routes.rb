@@ -2,9 +2,10 @@ Rails.application.routes.draw do
 
   # Routes for general website nav:
   get("/", { :controller => "application", :action => "home" })
-  get("/find_sublet", { :controller => "application", :action => "find" })
-  get("/search_sublets", { :controller => "listings", :action => "search" })
-  get("/initiate_sublet", { :controller => "application", :action => "initiate_sublet" })
+  get("/find_listing", { :controller => "application", :action => "find" })
+  get("/search_listing", { :controller => "listings", :action => "search" })
+  get("/initiate_listing", { :controller => "application", :action => "initiate_listing_form" })
+  get("/finalize_listing/:path_id", { :controller => "application", :action => "finalize_listing_form" })
   
     # OWNED LISTINGS
 
@@ -25,7 +26,28 @@ Rails.application.routes.draw do
     
     # SIGN OUT        
     get("/user_sign_out", { :controller => "users", :action => "destroy_cookies" })
- 
+
+  #------------------------------  
+
+  # Routes for the Listing resource:
+
+  # CREATE
+  post("/insert_listing", { :controller => "listings", :action => "create" })
+          
+  # READ
+  get("/listings", { :controller => "listings", :action => "index" })
+  
+  get("/listings/:path_id", { :controller => "listings", :action => "show" })
+  
+  # UPDATE
+  get("/list_edit_form/:path_id", { :controller => "listings", :action => "edit_form" })
+  post("/edit_listing/:path_id", { :controller => "listings", :action => "update" })
+  
+  # DELETE
+  get("/delete_listing/:path_id", { :controller => "listings", :action => "destroy" })
+
+  #------------------------------  
+  
   # Routes for the Region resource:
 
   # CREATE
@@ -289,25 +311,6 @@ Rails.application.routes.draw do
   
   # DELETE
   get("/delete_user/:path_id", { :controller => "users", :action => "destroy" })
-
-  #------------------------------
-
-  # Routes for the Listing resource:
-
-  # CREATE
-  post("/insert_listing", { :controller => "listings", :action => "create" })
-          
-  # READ
-  get("/listings", { :controller => "listings", :action => "index" })
-  
-  get("/listings/:path_id", { :controller => "listings", :action => "show" })
-  
-  # UPDATE
-  
-  post("/listings/edit/:path_id", { :controller => "listings", :action => "update" })
-  
-  # DELETE
-  get("/delete_listing/:path_id", { :controller => "listings", :action => "destroy" })
 
   #------------------------------
 
