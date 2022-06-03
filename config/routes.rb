@@ -11,7 +11,10 @@ Rails.application.routes.draw do
 
     get("/user_listings/:path_id", { :controller => "listings", :action => "own_listings" })
 
-  
+    # BOOKMARKED LISTINGS
+
+    get("/bookmarked_listings/:path_id", { :controller => "listings", :action => "bookmarked_listings" })
+
     # SIGN UP FORM
 
     get("/user_sign_up", { :controller => "users", :action => "sign_up_form" })

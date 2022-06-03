@@ -7,6 +7,14 @@ class ListingsController < ApplicationController
 
     render({ :template => "listings/my_listings.html.erb" })
   end
+
+  def bookmarked_listings
+    matching_listings = Listing.all
+
+    @list_of_listings = matching_listings.order({ :created_at => :desc })
+
+    render({ :template => "listings/bookmarked_listings.html.erb" })
+  end
   
   def search
     matching_listings = Listing.all

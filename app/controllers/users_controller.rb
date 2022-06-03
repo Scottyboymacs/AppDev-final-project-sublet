@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
   
-  @current_user = User.where(:id => session[:user_id]).first
-
   def sign_in_form
     render({ :template => "users/sign_in.html.erb" })
   end

@@ -18,10 +18,10 @@
   </head>
 
   <body>
-Welcome <%=User.where(:id => session.fetch(:user_id)).first.username%>
+
   <nav>
     <ul>
-          <% if session[:user_id] == nil %>
+      <% if session[:user_id] == nil %>
       <li>
         <a href = "/user_sign_in">
          Sign in 
@@ -33,12 +33,17 @@ Welcome <%=User.where(:id => session.fetch(:user_id)).first.username%>
         </a>
       </li>
       <%end%>
-      <% if session[:user_id].present? %>
+      
+    <% if session[:user_id].present? %>
+       Welcome <%=User.where(:id => session.fetch(:user_id)).first.username%>
     <li>
       <a href = "/user_sign_out">Sign Out</a>
     </li>
     <li>
       <a href = "/user_listings/<%= session[:user_id] %>">My Listings</a>
+    </li>
+    <li>
+      <a href = "/bookmarked_listings/<%= session[:user_id] %>">Bookmarked Listings</a>
     </li>
       <%end%>
       <li>
