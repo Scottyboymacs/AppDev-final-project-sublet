@@ -31,9 +31,6 @@
       Region:
     </label>
       <select id="region_id_box" name="query_region_id">
-      <option value= <%=nil%>>
-        --
-      </option>
       <% Region.all.each do |region| %> 
         <option value= <%=region.id%>>
           <%=region.name%>
@@ -47,9 +44,6 @@
       State:
     </label>
     <select id="state_id_box" name="query_state_id">
-        <option value= <%=nil%>>
-          --
-        </option>
       <% State.all.each do |state| %> 
         <option value= <%=state.id%>>
           <%=state.name%>
@@ -62,9 +56,6 @@
     <label for="city_box">
     City:
     <select id="city_box" name="query_city_id">
-        <option value= <%=nil%>>
-          --
-        </option>
       <% City.all.each do |city| %> 
         <option value= <%=city.id%>>
           <%=city.name%>
