@@ -20,12 +20,15 @@ class User < ApplicationRecord
   belongs_to(:school)
   belongs_to(:firm)
 
-  has_many(:bookmarks)
+
   has_many(:messages)
   has_many(:photos, { :class_name => "Photo", :foreign_key => "owner_id" })
   has_many(:listings, { :class_name => "Listing", :foreign_key => "owner_id" })
   has_many(:received_messages, { :class_name => "Message", :foreign_key => "receiver_id" })
   has_many(:sent_messages, { :class_name => "Message", :foreign_key => "sender_id" })
+
+  has_many(:bookmarks, :class_name => "Bookmark", :foreign_key => "user_id")
+  has_many(:bookmarked_listings, { :through => :bookmarks, :source => :listing})
 
   validates :email, :uniqueness => { :case_sensitive => false }
   validates :email, :presence => true

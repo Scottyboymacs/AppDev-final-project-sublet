@@ -117,14 +117,14 @@ class ListingsController < ApplicationController
     the_listing.num_beds = params.fetch("query_num_beds")
     the_listing.num_baths = params.fetch("query_num_baths")
     the_listing.num_rooms = params.fetch("query_num_rooms")
-    the_listing.num_beds_offered = params.fetch("query_num_beds_offered")
-    the_listing.num_baths = params.fetch("query_num_baths")
-    the_listing.num_rooms_offered = params.fetch("query_num_rooms_offered")
+    #the_listing.num_beds_offered = params.fetch("query_num_beds_offered")
+    #the_listing.num_baths_offered = params.fetch("query_num_baths")
+    #the_listing.num_rooms_offered = params.fetch("query_num_rooms_offered")
     the_listing.region_id = Region.where(:name => params.fetch("query_region_name")).first.id
     the_listing.state_id = State.where(:name =>params.fetch("query_state_name")).first.id
     the_listing.city_id = City.where(:name =>params.fetch("query_city_name")).first.id
-    the_listing.neighborhood_id = Neighborhood.where(:name =>params.fetch("query_neighborhood_name")).first.id
-    the_listing.building_id = Building.where(:name =>params.fetch("query_building_name")).first.id
+    #the_listing.neighborhood_id = Neighborhood.where(:name =>params.fetch("query_neighborhood_name")).first.id
+    #the_listing.building_id = Building.where(:name =>params.fetch("query_building_name")).first.id
     the_listing.furnished = params.fetch("query_furnished", false)
     the_listing.ammenities = params.fetch("query_ammenities")
     the_listing.pets = params.fetch("query_pets", false)
@@ -134,10 +134,10 @@ class ListingsController < ApplicationController
     the_listing.floor = params.fetch("query_floor")
     the_listing.rent = params.fetch("query_rent")
     the_listing.dates_flex = params.fetch("query_dates_flex")
-    the_listing.start_flex_left = params.fetch("query_start_flex_left")
-    the_listing.start_flex_right = params.fetch("query_start_flex_right")
-    the_listing.end_flex_left = params.fetch("query_end_flex_left")
-    the_listing.end_flex_right = params.fetch("query_end_flex_right")
+    #the_listing.start_flex_left = params.fetch("query_start_flex_left")
+    #the_listing.start_flex_right = params.fetch("query_start_flex_right")
+    #the_listing.end_flex_left = params.fetch("query_end_flex_left")
+    #the_listing.end_flex_right = params.fetch("query_end_flex_right")
     the_listing.notes = params.fetch("query_notes")
     #the_listing.map_url = params.fetch("query_map_url")
     the_listing.website_url = params.fetch("query_website_url")

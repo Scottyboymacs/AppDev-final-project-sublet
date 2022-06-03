@@ -108,7 +108,7 @@ class UsersController < ApplicationController
     redirect_to("/users", { :notice => "User deleted successfully."} )
   end
 
-      # Uncomment line 72 here and line 4 in ApplicationController if you want to force users to sign in before any other actions.
+      # Uncomment line 112 here and line 4 in ApplicationController if you want to force users to sign in before any other actions.
   # skip_before_action(:force_user_sign_in, { :only => [:sign_up_form, :create, :sign_in_form, :create_cookie] })
 
  end

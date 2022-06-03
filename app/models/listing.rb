@@ -56,5 +56,5 @@ belongs_to(:building)
 has_many(:bookmarks)
 has_many(:photos)
 
-
+has_many(:bookmarker, { :through => :bookmarks, :source => :user})
 end
