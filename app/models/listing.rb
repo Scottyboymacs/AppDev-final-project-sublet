@@ -12,6 +12,7 @@
 #  floor             :integer
 #  furnished         :boolean
 #  gender_pref       :integer
+#  listing_type      :string
 #  map_url           :string
 #  name              :string
 #  notes             :string
@@ -30,7 +31,6 @@
 #  start_flex_left   :integer
 #  start_flex_right  :integer
 #  status            :boolean
-#  sublease_category :integer
 #  visibility        :integer
 #  website_url       :string
 #  created_at        :datetime         not null

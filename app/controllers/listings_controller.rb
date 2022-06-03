@@ -37,7 +37,7 @@ class ListingsController < ApplicationController
   def create
     the_listing = Listing.new
     the_listing.owner_id = params.fetch("query_owner_id")
-    the_listing.name = session.fetch("query_listing_name")
+    the_listing.name = params.fetch("query_listing_name")
     the_listing.open_date = params.fetch("query_open_date")
     the_listing.close_date = params.fetch("query_close_date")
     #the_listing.status = params.fetch("query_status", false)
@@ -80,6 +80,14 @@ class ListingsController < ApplicationController
       redirect_to("/initiate_listing", { :alert => the_listing.errors.full_messages.to_sentence })
     end
   end
+
+  def finalize_listing_form
+    the_id = params.fetch("path_id")
+    matching_listings = Listing.where({ :id => the_id })
+    @the_listing = matching_listings.at(0) 
+    
+    render({ :template => "listings/finalize.html.erb" })
+  end 
 
   def edit_form
     the_id = params.fetch("path_id")

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_03_143609) do
+ActiveRecord::Schema.define(version: 2022_06_03_181932) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer "user_id"
@@ -84,7 +84,6 @@ ActiveRecord::Schema.define(version: 2022_06_03_143609) do
     t.string "ammenities"
     t.boolean "pets"
     t.boolean "smoking"
-    t.integer "sublease_category"
     t.integer "gender_pref"
     t.integer "floor"
     t.float "rent"
@@ -102,6 +101,7 @@ ActiveRecord::Schema.define(version: 2022_06_03_143609) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
+    t.string "listing_type"
   end
 
   create_table "messages", force: :cascade do |t|

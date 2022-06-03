@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get("/find_listing", { :controller => "application", :action => "find" })
   get("/search_listing", { :controller => "listings", :action => "search" })
   get("/initiate_listing", { :controller => "application", :action => "initiate_listing_form" })
-  get("/finalize_listing/:path_id", { :controller => "application", :action => "finalize_listing_form" })
+  get("/finalize_listing/:path_id", { :controller => "listings", :action => "finalize_listing_form" })
   
     # OWNED LISTINGS
 
