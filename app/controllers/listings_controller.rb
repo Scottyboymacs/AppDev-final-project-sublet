@@ -29,6 +29,7 @@ class ListingsController < ApplicationController
   def create
     the_listing = Listing.new
     the_listing.owner_id = params.fetch("query_owner_id")
+    the_listing.name = params.fetch("query_listing_name")
     the_listing.open_date = params.fetch("query_open_date")
     the_listing.close_date = params.fetch("query_close_date")
     #the_listing.status = params.fetch("query_status", false)
@@ -39,8 +40,8 @@ class ListingsController < ApplicationController
     #the_listing.num_beds_offered = params.fetch("query_num_beds_offered")
     #the_listing.num_baths_offered = params.fetch("query_num_baths")
     #the_listing.num_rooms_offered = params.fetch("query_num_rooms_offered")
-    the_listing.region_id = Region.where(:name => params.fetch("query_region_name")).first.id
-    the_listing.state_id = State.where(:name => params.fetch("query_state_name")).first.id
+    the_listing.region_id = Region.where(:id => params.fetch("query_region_id")).first.id
+    the_listing.state_id = State.where(:id => params.fetch("query_state_id")).first.id
     the_listing.city_id = City.where(:name => params.fetch("query_city_name")).first.id
     #the_listing.neighborhood_id = params.fetch("query_neighborhood_id")
     #the_listing.building_id = params.fetch("query_building_id")
@@ -66,7 +67,7 @@ class ListingsController < ApplicationController
 
     if the_listing.valid?
       the_listing.save
-      redirect_to("/listings/edit/:#{the_listing.id}", { :notice => "Listing created successfully." })
+      redirect_to("/listings/#{the_listing.id}", { :notice => "Listing created successfully." })
     else
       redirect_to("/initiate_sublet", { :alert => the_listing.errors.full_messages.to_sentence })
     end

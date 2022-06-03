@@ -13,6 +13,7 @@
 #  furnished         :boolean
 #  gender_pref       :integer
 #  map_url           :string
+#  name              :string
 #  notes             :string
 #  num_baths         :integer
 #  num_baths_offered :integer

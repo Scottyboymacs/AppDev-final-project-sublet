@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_02_195642) do
+ActiveRecord::Schema.define(version: 2022_06_03_143609) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer "user_id"
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 2022_06_02_195642) do
     t.integer "neighbourhood_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.integer "listing_id"
   end
 
   create_table "cities", force: :cascade do |t|
@@ -99,6 +101,7 @@ ActiveRecord::Schema.define(version: 2022_06_02_195642) do
     t.integer "visibility"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
   end
 
   create_table "messages", force: :cascade do |t|

@@ -6,30 +6,39 @@
   <input  type="hidden" id="owner_id" name="query_owner_id" value="<%=session[:user_id]%>">
  
   <div>
+    <label for="name_box">
+      Listing Name:
+    </label>
+    <input placeholder="Name your listing!" type="text" id="name_box" name="query_listing_name" required></textarea>
+  </div>
+
+  <div>
     <label for="open_date_box">
       Start Sublet:
     </label>
-    <input placeholder="Enter a start date" type="date" id="open_date_box" name="query_open_date"></textarea>
+    <input placeholder="Enter a start date" type="date" id="open_date_box" name="query_open_date" required></textarea>
   </div>
   
     <div>
     <label for="close_date_box">
       End Sublet:
     </label>
-    <input placeholder="Enter a start date" type="date" id="close_date_box" name="query_close_date"></textarea>
+    <input placeholder="Enter a start date" type="date" id="close_date_box" name="query_close_date" required></textarea>
   </div>
 
   <div>
     <label for="region_id_box">
       Region:
     </label>
-    <select id="region_id_box" name="query_region_name">
-      <option value= <%=Region.first.id%>>
-        <%=Region.first.name%>
-      </option>
+      <select id="region_id_box" name="query_region_id">
       <option value= <%=nil%>>
         --
       </option>
+      <% Region.all.each do |region| %> 
+        <option value= <%=region.id%>>
+          <%=region.name%>
+        </option>
+      <%end%>
     </select>
   </div>
   
@@ -37,7 +46,7 @@
     <label for="state_id_box">
       State:
     </label>
-    <select id="state_id_box" name="query_state_name">
+    <select id="state_id_box" name="query_state_id">
         <option value= <%=nil%>>
           --
         </option>
@@ -49,25 +58,25 @@
     </select>
   </div>
   
-    <div>
+  <div>
     <label for="city_box">
       City:
     </label>
-    <input placeholder="Watch your spelling :)" type="text" id="city_box" name="query_city_name"></textarea>
+    <input placeholder="Watch your spelling :)" type="text" id="city_box" name="query_city_name" required></textarea>
   </div>
 
   <div>
     <label for="address_box">
       Address:
     </label>
-    <input placeholder="Where is the place?" type="text" id="address_box" name="query_address"></textarea>
+    <input placeholder="Where is the place?" type="text" id="address_box" name="query_address" required></textarea>
   </div>
 
   <div>
-    <label for="cost_box">
+    <label for="rent_box">
       Weekly Rent Price: $
     </label>
-    <input placeholder="What are you charging?" type="number" id="cost_box" name="query_cost"  min="0"></textarea>
+    <input placeholder="What are you charging?" type="number" id="cost_box" name="query_rent"  min="0" required></textarea>
   </div>
 <br>
   <div>
@@ -75,7 +84,7 @@
   </div>
   <div>
   <% @visibility.each do |i| %>
-    <input type="radio" id="visibility<%=i%>" name="query_viibility" value=<%= @visibility.index %> required>
+    <input type="radio" id="visibility<%=i%>" name="query_visibility" value=<%= @visibility.index %> required>
       <label for="visibility">
         <%=i%> 
       </label>
@@ -101,7 +110,7 @@
   </div>
   <div>
   <% @y_or_n.each do |i| %>
-    <input type="radio" id="visibility" name="query_visibility" value=<%= i %> required>
+    <input type="radio" id="visibility" name="query_gender_pref" value=<%= i %> required>
       <label for="visibility">
         <%= i.to_s.gsub(/\w+/) { |word| word == "true" ? "Yes" : "No" }%>
       </label>
