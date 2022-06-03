@@ -57,7 +57,7 @@ class ListingsController < ApplicationController
     #the_listing.ammenities = params.fetch("query_ammenities")
     #the_listing.pets = params.fetch("query_pets", false)
     #the_listing.smoking = params.fetch("query_smoking", false)
-    #the_listing.sublease_category = params.fetch("query_sublease_category")
+    #the_listing.listing_type = params.fetch("query_listing_type")
     the_listing.gender_pref = params.fetch("query_gender_pref")
     #the_listing.floor = params.fetch("query_floor")
     the_listing.rent = params.fetch("query_rent")
@@ -112,16 +112,16 @@ class ListingsController < ApplicationController
     the_listing.num_beds_offered = params.fetch("query_num_beds_offered")
     the_listing.num_baths = params.fetch("query_num_baths")
     the_listing.num_rooms_offered = params.fetch("query_num_rooms_offered")
-    the_listing.region_id = params.fetch("query_region_id")
-    the_listing.state_id = params.fetch("query_state_id")
-    the_listing.city_id = params.fetch("query_city_id")
-    the_listing.neighborhood_id = params.fetch("query_neighborhood_id")
-    the_listing.building_id = params.fetch("query_building_id")
+    the_listing.region_id = Region.where(:name => params.fetch("query_region_name")).first.id
+    the_listing.state_id = State.where(:name =>params.fetch("query_state_name")).first.id
+    the_listing.city_id = City.where(:name =>params.fetch("query_city_name")).first.id
+    the_listing.neighborhood_id = Neighborhood.where(:name =>params.fetch("query_neighborhood_name")).first.id
+    the_listing.building_id = Building.where(:name =>params.fetch("query_building_name")).first.id
     the_listing.furnished = params.fetch("query_furnished", false)
     the_listing.ammenities = params.fetch("query_ammenities")
     the_listing.pets = params.fetch("query_pets", false)
     the_listing.smoking = params.fetch("query_smoking", false)
-    the_listing.sublease_category = params.fetch("query_sublease_category")
+    the_listing.listing_type = params.fetch("query_listing_type")
     the_listing.gender_pref = params.fetch("query_gender_pref")
     the_listing.floor = params.fetch("query_floor")
     the_listing.rent = params.fetch("query_rent")
@@ -131,10 +131,10 @@ class ListingsController < ApplicationController
     the_listing.end_flex_left = params.fetch("query_end_flex_left")
     the_listing.end_flex_right = params.fetch("query_end_flex_right")
     the_listing.notes = params.fetch("query_notes")
-    the_listing.map_url = params.fetch("query_map_url")
+    #the_listing.map_url = params.fetch("query_map_url")
     the_listing.website_url = params.fetch("query_website_url")
-    the_listing.satellite_url = params.fetch("query_satellite_url")
-    the_listing.num_watching = params.fetch("query_num_watching")
+    #the_listing.satellite_url = params.fetch("query_satellite_url")
+    #the_listing.num_watching = params.fetch("query_num_watching")
     the_listing.visibility = params.fetch("query_visibility")
 
     if the_listing.valid?

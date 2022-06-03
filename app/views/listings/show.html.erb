@@ -107,7 +107,7 @@
         </th>
 
         <th>
-          Sublease category
+          Listing Type
         </th>
 
         <th>
@@ -204,23 +204,23 @@
         </td>
 
         <td>
-          <%= @the_listing.region_id %>
+          <%= @the_listing.region.name %>
         </td>
 
         <td>
-          <%= @the_listing.state_id %>
+          <%= @the_listing.state.name %>
         </td>
 
         <td>
-          <%= @the_listing.city_id %>
+          <%= @the_listing.city.name %>
         </td>
 
         <td>
-          <%= @the_listing.neighborhood_id %>
+          <%= @the_listing.neighborhood.name %>
         </td>
 
         <td>
-          <%= @the_listing.building_id %>
+          <%= @the_listing.building.name %>
         </td>
 
         <td>
@@ -240,7 +240,7 @@
         </td>
 
         <td>
-          <%= @the_listing.sublease_category %>
+          <%= @the_listing.listing_type %>
         </td>
 
         <td>

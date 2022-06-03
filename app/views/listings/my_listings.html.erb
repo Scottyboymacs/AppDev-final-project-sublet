@@ -1,4 +1,4 @@
-<h1> Your Listings <h1>
+<h1> Your Listings </h1>
 
 <div>
   <div>
@@ -32,10 +32,10 @@
       </tr>
 
       <% @list_of_listings.each do |listing| %>
-        <% if listing.user.id == session[:user_id] %>
+        <% if listing.owner.id == session[:user_id] %>
       <tr>
         <td>
-          <a href="/listing/<%= @the_listing.id %>">
+          <a href="/listing/<%= listing.id %>">
             <%= listing.name %>
           </a>
         </td>

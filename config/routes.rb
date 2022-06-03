@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   
     # OWNED LISTINGS
 
-    get("/user_listings/:path_id", { :controller => "listings", :action => "" })
+    get("/user_listings/:path_id", { :controller => "listings", :action => "own_listings" })
 
   
     # SIGN UP FORM
