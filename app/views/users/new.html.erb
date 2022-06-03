@@ -27,18 +27,36 @@ Let's get you signed up.
   </div>
     
   <div>
-    <label for="firm_name_box">
+      <label for="firm_id_box">
       Firm:
-    </label>
-    <input placeholder="Please don't abbreviate!" type="text" id="firm_name_box" name="query_firm_name"></textarea>
+    <select id="firm_id_box" name="query_firm_id">
+        <option value= <%=nil%>>
+          --
+        </option>
+      <% Firm.all.each do |firm| %> 
+        <option value= <%=firm.id%>>
+          <%=firm.name%>
+        </option>
+      <%end%>
+    </select>
   </div>
+
   
   <div>
-    <label for="school_name_box">
+    <label for="school_id_box">
       School:
-    </label>
-    <input placeholder="Please don't abbreviate!" type="text" id="school_name_box" name="query_school_name"></textarea>
+    <select id="school_id_box" name="query_school_id">
+        <option value= <%=nil%>>
+          --
+        </option>
+      <% School.all.each do |school| %> 
+        <option value= <%=school.id%>>
+          <%=school.name%>
+        </option>
+      <%end%>
+    </select>
   </div>
+
 
   <div>
     <label for="phone_num_box">
@@ -48,11 +66,21 @@ Let's get you signed up.
   </div>
 
   <div>
-    <label for="city_box">
-      School:
+    <label for="city_id_box">
+      City:
     </label>
-    <input placeholder="Your City" type="text" id="city_box" name="query_city_name"></textarea>
+    <select id="city_id_box" name="query_city_id">
+        <option value= <%=nil%>>
+          --
+        </option>
+      <% City.all.each do |city| %> 
+        <option value= <%=city.id%>>
+          <%=city.name%>
+        </option>
+      <%end%>
+    </select>
   </div>
+
 
   <div>
     <label for="password_box">Password</label>

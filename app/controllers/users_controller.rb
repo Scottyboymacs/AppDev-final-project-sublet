@@ -63,15 +63,15 @@ class UsersController < ApplicationController
     the_user.password = params.fetch("query_password")
     the_user.password_confirmation = params.fetch("query_password_confirmation")
     the_user.phone_num = params.fetch("query_phone_num")
-    the_user.firm_id = Firm.where(:name => params.fetch("query_firm_name")).first.id
-    the_user.school_id = School.where(:name => params.fetch("query_school_name")).first.id
-    #the_user.city_id = City.where(:name => params.fetch("query_city_name")).first.id
+    the_user.firm_id = params.fetch("query_firm_id")
+    the_user.school_id = params.fetch("query_school_id")
+    the_user.city_id = params.fetch("query_city_id")
     #the_user.neighborhood_id = params.fetch("query_neighborhood_id")
     #the_user.building_id = params.fetch("query_building_id")
 
     if the_user.valid?
       the_user.save
-      redirect_to("/users", { :notice => "User created successfully." })
+      redirect_to("/user_sign_in", { :notice => "User created successfully." })
     else
       redirect_to("/users", { :alert => the_user.errors.full_messages.to_sentence })
     end

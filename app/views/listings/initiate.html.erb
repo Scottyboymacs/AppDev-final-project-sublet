@@ -60,9 +60,17 @@
   
   <div>
     <label for="city_box">
-      City:
-    </label>
-    <input placeholder="Watch your spelling :)" type="text" id="city_box" name="query_city_name" required></textarea>
+    City:
+    <select id="city_box" name="query_city_id">
+        <option value= <%=nil%>>
+          --
+        </option>
+      <% City.all.each do |city| %> 
+        <option value= <%=city.id%>>
+          <%=city.name%>
+        </option>
+      <%end%>
+    </select>
   </div>
 
   <div>

@@ -58,7 +58,7 @@ class ListingsController < ApplicationController
     #the_listing.num_rooms_offered = params.fetch("query_num_rooms_offered")
     the_listing.region_id = Region.where(:id => params.fetch("query_region_id")).first.id
     the_listing.state_id = State.where(:id => params.fetch("query_state_id")).first.id
-    the_listing.city_id = City.where(:name => params.fetch("query_city_name")).first.id
+    the_listing.city_id = City.where(:id => params.fetch("query_city_id")).first.id
     #the_listing.neighborhood_id = params.fetch("query_neighborhood_id")
     #the_listing.building_id = params.fetch("query_building_id")
     #the_listing.furnished = params.fetch("query_furnished", false)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_03_181932) do
+ActiveRecord::Schema.define(version: 2022_06_03_204406) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer "user_id"
@@ -174,6 +174,8 @@ ActiveRecord::Schema.define(version: 2022_06_03_181932) do
     t.integer "building_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
   end
 
 end

@@ -4,6 +4,8 @@
 #
 #  id              :integer          not null, primary key
 #  email           :string
+#  first_name      :string
+#  last_name       :string
 #  password_digest :string
 #  phone_num       :integer
 #  username        :string

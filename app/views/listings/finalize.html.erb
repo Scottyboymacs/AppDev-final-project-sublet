@@ -91,30 +91,6 @@
       </div>
 
       <div>
-        <label for="num_beds_offered_box">
-          Num beds offered
-        </label>
-
-        <input type="text" id="num_beds_offered_box" name="query_num_beds_offered" value="<%= @the_listing.num_beds_offered %>">
-      </div>
-
-      <div>
-        <label for="num_baths_box">
-          Num baths
-        </label>
-
-        <input type="text" id="num_baths_box" name="query_num_baths" value="<%= @the_listing.num_baths %>">
-      </div>
-
-      <div>
-        <label for="num_rooms_offered_box">
-          Num rooms offered
-        </label>
-
-        <input type="text" id="num_rooms_offered_box" name="query_num_rooms_offered" value="<%= @the_listing.num_rooms_offered %>">
-      </div>
-
-      <div>
         <label for="region_name_box">
           Region
         </label>
@@ -138,23 +114,7 @@
         <input type="text" id="city_name_box" name="query_city_name" value="<%= @the_listing.city.name %>">
       </div>
 
-      <div>
-        <label for="neighborhood_name_box">
-          Neighborhood
-        </label>
-
-        <input type="text" id="neighborhood_name_box" name="query_neighborhood_name">
-      </div>
-
-      <div>
-        <label for="building_name_box">
-          Building
-        </label>
-
-        <input type="text" id="building_name_box" name="query_building_name">
-      </div>
-
-      <div>
+     <div>
         <input type="checkbox" id="furnished_box" name="query_furnished" value="1" <%= "checked" if @the_listing.furnished %>>
 
         <label for="furnished_box">
@@ -226,39 +186,7 @@
         <input type="text" id="dates_flex_box" name="query_dates_flex" value="<%= @the_listing.dates_flex %>">
       </div>
 
-      <div>
-        <label for="start_flex_left_box">
-          Start flex left
-        </label>
-
-        <input type="text" id="start_flex_left_box" name="query_start_flex_left" value="<%= @the_listing.start_flex_left %>">
-      </div>
-
-      <div>
-        <label for="start_flex_right_box">
-          Start flex right
-        </label>
-
-        <input type="text" id="start_flex_right_box" name="query_start_flex_right" value="<%= @the_listing.start_flex_right %>">
-      </div>
-
-      <div>
-        <label for="end_flex_left_box">
-          End flex left
-        </label>
-
-        <input type="text" id="end_flex_left_box" name="query_end_flex_left" value="<%= @the_listing.end_flex_left %>">
-      </div>
-
-      <div>
-        <label for="end_flex_right_box">
-          End flex right
-        </label>
-
-        <input type="text" id="end_flex_right_box" name="query_end_flex_right" value="<%= @the_listing.end_flex_right %>">
-      </div>
-
-      <div>
+            <div>
         <label for="notes_box">
           Notes
         </label>
