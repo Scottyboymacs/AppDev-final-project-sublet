@@ -4,13 +4,13 @@
       Edit listing
     </h2>
 
-    <form action="/modify_listing/<%= @the_listing.id %>"  method="post" >
+    <form action="/edit_listing/<%= @the_listing.id %>"  method="post" >
       <div>
-        <label for="owner_id_box">
+        <label for="owner_name_box">
           Owner
         </label>
 
-        <input type="text" id="owner_id_box" name="query_owner_id" value="<%= @the_listing.owner_id %>">
+        <input type="text" id="owner_name_box" name="query_owner_name" value="<%= @the_listing.owner.username %>">
       </div>
 
       <div>
@@ -70,67 +70,27 @@
       </div>
 
       <div>
-        <label for="num_beds_offered_box">
-          Num beds offered
-        </label>
-
-        <input type="text" id="num_beds_offered_box" name="query_num_beds_offered" value="<%= @the_listing.num_beds_offered %>">
-      </div>
-
-      <div>
-        <label for="num_baths_box">
-          Num baths
-        </label>
-
-        <input type="text" id="num_baths_box" name="query_num_baths" value="<%= @the_listing.num_baths %>">
-      </div>
-
-      <div>
-        <label for="num_rooms_offered_box">
-          Num rooms offered
-        </label>
-
-        <input type="text" id="num_rooms_offered_box" name="query_num_rooms_offered" value="<%= @the_listing.num_rooms_offered %>">
-      </div>
-
-      <div>
-        <label for="region_id_box">
+        <label for="region_name_box">
           Region
         </label>
 
-        <input type="text" id="region_id_box" name="query_region_id" value="<%= @the_listing.region_id %>">
+        <input type="text" id="region_name_box" name="query_region_name" value="<%= @the_listing.region.name %>">
       </div>
 
       <div>
-        <label for="state_id_box">
+        <label for="state_name_box">
           State
         </label>
 
-        <input type="text" id="state_id_box" name="query_state_id" value="<%= @the_listing.state_id %>">
+        <input type="text" id="state_name_box" name="query_state_name" value="<%= @the_listing.state.name %>">
       </div>
 
       <div>
-        <label for="city_id_box">
+        <label for="city_name_box">
           City
         </label>
 
-        <input type="text" id="city_id_box" name="query_city_id" value="<%= @the_listing.city_id %>">
-      </div>
-
-      <div>
-        <label for="neighborhood_id_box">
-          Neighborhood
-        </label>
-
-        <input type="text" id="neighborhood_id_box" name="query_neighborhood_id" value="<%= @the_listing.neighborhood_id %>">
-      </div>
-
-      <div>
-        <label for="building_id_box">
-          Building
-        </label>
-
-        <input type="text" id="building_id_box" name="query_building_id" value="<%= @the_listing.building_id %>">
+        <input type="text" id="city_name_box" name="query_city_name" value="<%= @the_listing.city.name %>">
       </div>
 
       <div>
@@ -167,7 +127,7 @@
 
       <div>
         <label for="listing_type_box">
-          Sublease category
+          Listing Type
         </label>
 
         <input type="text" id="listing_type_box" name="query_listing_type" value="<%= @the_listing.listing_type %>">
