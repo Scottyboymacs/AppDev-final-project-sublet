@@ -4,10 +4,8 @@ Rails.application.routes.draw do
   get("/", { :controller => "application", :action => "home" })
   get("/find_sublet", { :controller => "application", :action => "find" })
   get("/search_sublets", { :controller => "listings", :action => "search" })
-  post("/post_sublet", { :controller => "application", :action => "post" })
-
-
-
+  get("/initiate_sublet", { :controller => "application", :action => "initiate" })
+ 
   # Routes for the Region resource:
 
   # CREATE

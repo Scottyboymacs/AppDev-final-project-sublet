@@ -66,9 +66,9 @@ class ListingsController < ApplicationController
 
     if the_listing.valid?
       the_listing.save
-      redirect_to("/listings", { :notice => "Listing created successfully." })
+      redirect_to("/listings/:#{the_listing.id}", { :notice => "Listing created successfully." })
     else
-      redirect_to("/listings", { :alert => the_listing.errors.full_messages.to_sentence })
+      redirect_to("/initiate_sublet", { :alert => the_listing.errors.full_messages.to_sentence })
     end
   end
 

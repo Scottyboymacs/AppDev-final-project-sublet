@@ -1,16 +1,20 @@
 <h1> Let's start with the basics </h1>
 
-<form action="/post_sublet" method="post">
+<h4> Give us the essentials and we'll get your listing started! </h4>
+
+<form action="/insert_listing" method="post">
+  <input  type="hidden" id="owner_id" name="query_owner_id" value="<%=session[:user_id]%>">
+ 
   <div>
     <label for="start_date_box">
-      Start Date:
+      Start Sublet:
     </label>
     <input placeholder="Enter a start date" type="date" id="start_date_box" name="query_start_date"></textarea>
   </div>
   
     <div>
     <label for="end_date_box">
-      End Date:
+      End Sublet:
     </label>
     <input placeholder="Enter a start date" type="date" id="end_date_box" name="query_end_date"></textarea>
   </div>
@@ -34,44 +38,77 @@
       State:
     </label>
     <select id="state_id_box" name="query_state_id">
-      <option value= <%=State.first.id%>>
-        <%=State.first.name%>
-      </option>
+        <option value= <%=nil%>>
+          --
+        </option>
+      <% State.all.each do |state| %> 
+        <option value= <%=state.id%>>
+          <%=state.name%>
+        </option>
+      <%end%>
     </select>
   </div>
   
-  <div>
+    <div>
     <label for="city_box">
       City:
     </label>
     <input placeholder="Watch your spelling :)" type="text" id="city_box" name="query_city"></textarea>
   </div>
-  
-  <div>
-    <label for="school_name_box">
-      School:
-    </label>
-    <input placeholder="Watch your spelling :)" type="text" id="school_name_box" name="query_school_name"></textarea>
-  </div>
 
   <div>
-    <label for="firm_name_box">
-      Firm:
+    <label for="neighborhood_box">
+      Neighborhood:
     </label>
-    <input placeholder="Please don't abbreviate!" type="text" id="firm_name_box" name="query_firm_name"></textarea>
-
+    <input placeholder="Use the exact name" type="text" id="neighborhood_box" name="query_neighborhood"></textarea>
   </div>
 
   <div>
     <label for="cost_box">
       Weekly Rent Price: $
     </label>
-    <input placeholder="What are you planning to charge the subletter?" type="number" id="cost_box" name="query_cost"  min="0"></textarea>
+    <input placeholder="What are you charging?" type="number" id="cost_box" name="query_cost"  min="0"></textarea>
   </div>
 <br>
   <div>
-    <label for="location_box">
-      Shortest distance from:
-    </label>
-    <input placeholder="Address" type="text" id="location_box" name="query_location" ></textarea>
+    Who should listing be visible to?
   </div>
+  <div>
+  <% @visibility.each do |i| %>
+    <input type="radio" id="visibility<%=i%>" name="query_viibility" value=<%= @visibility.index %> required>
+      <label for="visibility">
+        <%=i%> 
+      </label>
+  <%end%>
+  </div>
+<br>
+
+<!-- Use this later when you want to allow school specific visibilityfiltering!!!
+  <div>
+    Choose which schools' students can see your listing:
+  </div>
+  <% @school_list.each do |school| %>
+  <input type="checkbox" id="school_<%=@school_list.index(school)%>" name="<%=school.name%>" value="<%=school.name%>">
+    <label for="school_<%=@school_list.index(school)%>">
+      <%=school.name%>
+    </label>
+    <br>
+  <%end%>
+<br>
+!-->
+  <div>
+    Visible to people only of your Preferred Tenant Gender?
+  </div>
+  <div>
+  <% @y_or_n.each do |i| %>
+    <input type="radio" id="visibility" name="query_visibility" value=<%= i %> required>
+      <label for="visibility">
+        <%= i.to_s.gsub(/\w+/) { |word| word == "true" ? "Yes" : "No" }%>
+      </label>
+  <% end %>
+  </div>
+<br>
+  <button>
+    Post!
+  </button>
+</form>
