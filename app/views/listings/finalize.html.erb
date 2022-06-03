@@ -27,11 +27,11 @@
 
     <form action="/edit_listing/<%= @the_listing.id %>"  method="post" >
       <div>
-        <label for="owner_id_box">
+        <label for="owner_name_box">
           Owner
         </label>
 
-        <input type="text" id="owner_id_box" name="query_owner_id" value="<%= @the_listing.owner_id %>">
+        <input type="text" id="owner_name_box" name="query_owner_name" value="<%= @the_listing.owner.username %>">
       </div>
 
       <div>

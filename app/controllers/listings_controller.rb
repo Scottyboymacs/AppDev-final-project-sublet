@@ -109,7 +109,7 @@ class ListingsController < ApplicationController
     the_id = params.fetch("path_id")
     the_listing = Listing.where({ :id => the_id }).at(0)
 
-    the_listing.owner_id = params.fetch("query_owner_id")
+    the_listing.owner_id = User.where(:username => params.fetch("query_owner_name")).first.id
     the_listing.open_date = params.fetch("query_open_date")
     the_listing.close_date = params.fetch("query_close_date")
     the_listing.status = params.fetch("query_status", false)
