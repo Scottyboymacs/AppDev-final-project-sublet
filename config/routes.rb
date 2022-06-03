@@ -284,7 +284,7 @@ Rails.application.routes.draw do
   
   # UPDATE
   
-  post("/modify_listing/:path_id", { :controller => "listings", :action => "update" })
+  post("/listings/edit/:path_id", { :controller => "listings", :action => "update" })
   
   # DELETE
   get("/delete_listing/:path_id", { :controller => "listings", :action => "destroy" })

@@ -39,10 +39,10 @@ class ListingsController < ApplicationController
     #the_listing.num_beds_offered = params.fetch("query_num_beds_offered")
     #the_listing.num_baths_offered = params.fetch("query_num_baths")
     #the_listing.num_rooms_offered = params.fetch("query_num_rooms_offered")
-    the_listing.region_id = params.fetch("query_region_id")
-    the_listing.state_id = params.fetch("query_state_id")
-    the_listing.city_id = params.fetch("query_city_id")
-    the_listing.neighborhood_id = params.fetch("query_neighborhood_id")
+    the_listing.region_id = Region.where(:name => params.fetch("query_region_name")).first.id
+    the_listing.state_id = State.where(:name => params.fetch("query_state_name")).first.id
+    the_listing.city_id = City.where(:name => params.fetch("query_city_name")).first.id
+    #the_listing.neighborhood_id = params.fetch("query_neighborhood_id")
     #the_listing.building_id = params.fetch("query_building_id")
     #the_listing.furnished = params.fetch("query_furnished", false)
     #the_listing.ammenities = params.fetch("query_ammenities")
@@ -66,7 +66,7 @@ class ListingsController < ApplicationController
 
     if the_listing.valid?
       the_listing.save
-      redirect_to("/listings/:#{the_listing.id}", { :notice => "Listing created successfully." })
+      redirect_to("/listings/edit/:#{the_listing.id}", { :notice => "Listing created successfully." })
     else
       redirect_to("/initiate_sublet", { :alert => the_listing.errors.full_messages.to_sentence })
     end

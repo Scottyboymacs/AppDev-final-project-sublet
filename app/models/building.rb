@@ -12,4 +12,13 @@
 #  state_id         :integer
 #
 class Building < ApplicationRecord
+
+  has_many(:listings)
+  has_many(:users)
+
+  belongs_to(:neighborhood)
+  belongs_to(:city)
+  belongs_to(:state)
+  belongs_to(:region)
+
 end

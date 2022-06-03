@@ -11,4 +11,8 @@
 #  state_id   :integer
 #
 class School < ApplicationRecord
+
+  belongs_to(:region)
+  belongs_to(:state)
+
 end

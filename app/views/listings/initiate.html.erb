@@ -6,24 +6,24 @@
   <input  type="hidden" id="owner_id" name="query_owner_id" value="<%=session[:user_id]%>">
  
   <div>
-    <label for="start_date_box">
+    <label for="open_date_box">
       Start Sublet:
     </label>
-    <input placeholder="Enter a start date" type="date" id="start_date_box" name="query_start_date"></textarea>
+    <input placeholder="Enter a start date" type="date" id="open_date_box" name="query_open_date"></textarea>
   </div>
   
     <div>
-    <label for="end_date_box">
+    <label for="close_date_box">
       End Sublet:
     </label>
-    <input placeholder="Enter a start date" type="date" id="end_date_box" name="query_end_date"></textarea>
+    <input placeholder="Enter a start date" type="date" id="close_date_box" name="query_close_date"></textarea>
   </div>
 
   <div>
     <label for="region_id_box">
       Region:
     </label>
-    <select id="region_id_box" name="query_region_id">
+    <select id="region_id_box" name="query_region_name">
       <option value= <%=Region.first.id%>>
         <%=Region.first.name%>
       </option>
@@ -37,7 +37,7 @@
     <label for="state_id_box">
       State:
     </label>
-    <select id="state_id_box" name="query_state_id">
+    <select id="state_id_box" name="query_state_name">
         <option value= <%=nil%>>
           --
         </option>
@@ -53,14 +53,14 @@
     <label for="city_box">
       City:
     </label>
-    <input placeholder="Watch your spelling :)" type="text" id="city_box" name="query_city"></textarea>
+    <input placeholder="Watch your spelling :)" type="text" id="city_box" name="query_city_name"></textarea>
   </div>
 
   <div>
-    <label for="neighborhood_box">
-      Neighborhood:
+    <label for="address_box">
+      Address:
     </label>
-    <input placeholder="Use the exact name" type="text" id="neighborhood_box" name="query_neighborhood"></textarea>
+    <input placeholder="Where is the place?" type="text" id="address_box" name="query_address"></textarea>
   </div>
 
   <div>

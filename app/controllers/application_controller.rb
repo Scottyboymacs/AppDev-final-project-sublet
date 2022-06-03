@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     @visibility =  ["Private", "Fellow Students", "Work Colleagues", "Everyone"]
     @y_or_n = [true, false]
     @school_list = School.all.order(:name => :desc)
-    render({ :template => "user_facing_pages/post_sublet.html.erb" })
+    render({ :template => "listings/initiate.html.erb" })
   end
   
 

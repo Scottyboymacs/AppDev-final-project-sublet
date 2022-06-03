@@ -10,4 +10,9 @@
 #  state_id   :integer
 #
 class City < ApplicationRecord
+
+  belongs_to(:region)
+  belongs_to(:state)
+
+
 end

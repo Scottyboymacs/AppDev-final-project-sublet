@@ -9,4 +9,12 @@
 #  region_id  :integer
 #
 class State < ApplicationRecord
+
+  belongs_to(:region)
+
+  has_many(:cities)
+  has_many(:neighborhoods)
+  has_many(:buildings)
+  has_many(:listings)
+
 end
