@@ -1,5 +1,8 @@
 class ApplicationController < ActionController::Base
-
+    
+  # Uncomment line 4 in this file and line 72 in UsersController if you want to force users to sign in before any other actions.
+  # before_action(:force_user_sign_in)
+  
   def home
     render({ :template => "user_facing_pages/homepage.html.erb" })
   end

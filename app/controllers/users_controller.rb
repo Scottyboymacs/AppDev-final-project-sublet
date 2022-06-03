@@ -26,8 +26,8 @@ class UsersController < ApplicationController
     the_user.firm_id = params.fetch("query_firm_id")
     the_user.school_id = params.fetch("query_school_id")
     the_user.city_id = params.fetch("query_city_id")
-    the_user.neighborhood_id = params.fetch("query_neighborhood_id")
-    the_user.building_id = params.fetch("query_building_id")
+    #the_user.neighborhood_id = params.fetch("query_neighborhood_id")
+    #the_user.building_id = params.fetch("query_building_id")
 
     if the_user.valid?
       the_user.save
@@ -48,8 +48,8 @@ class UsersController < ApplicationController
     the_user.firm_id = params.fetch("query_firm_id")
     the_user.school_id = params.fetch("query_school_id")
     the_user.city_id = params.fetch("query_city_id")
-    the_user.neighborhood_id = params.fetch("query_neighborhood_id")
-    the_user.building_id = params.fetch("query_building_id")
+    #the_user.neighborhood_id = params.fetch("query_neighborhood_id")
+    #the_user.building_id = params.fetch("query_building_id")
 
     if the_user.valid?
       the_user.save
@@ -66,5 +66,47 @@ class UsersController < ApplicationController
     the_user.destroy
 
     redirect_to("/users", { :notice => "User deleted successfully."} )
+
+
+      # Uncomment line 72 here and line 4 in ApplicationController if you want to force users to sign in before any other actions.
+  # skip_before_action(:force_user_sign_in, { :only => [:sign_up_form, :create, :sign_in_form, :create_cookie] })
+
+  def sign_in_form
+    render({ :template => "users/sign_in.html.erb" })
+  end
+
+  def create_cookie
+    user = User.where({ :email => params.fetch("query_email") }).first
+    
+    the_supplied_password = params.fetch("query_password")
+    
+    if user != nil
+      are_they_legit = user.authenticate(the_supplied_password)
+    
+      if are_they_legit == false
+        redirect_to("/user_sign_in", { :alert => "Incorrect password." })
+      else
+        session[:user_id] = user.id
+      
+        redirect_to("/", { :notice => "Signed in successfully." })
+      end
+    else
+      redirect_to("/user_sign_in", { :alert => "No user with that email address." })
+    end
+  end
+
+  def destroy_cookies
+    reset_session
+
+    redirect_to("/", { :notice => "Signed out successfully." })
+  end
+
+  def sign_up_form
+    render({ :template => "users/sign_up.html.erb" })
+  end
+    
+  def edit_profile_form
+    render({ :template => "users/edit_profile.html.erb" })
+  end
   end
 end
