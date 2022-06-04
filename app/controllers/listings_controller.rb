@@ -21,6 +21,17 @@ class ListingsController < ApplicationController
 
     @list_of_listings = matching_listings.order({ :created_at => :desc })
 
+    @start_date = params.fetch("query_start_date")
+    @end_date = params.fetch("query_end_date")
+    @region_id = params.fetch("query_region_id").to_i
+    @state_id = params.fetch("query_state_id").to_i
+    @city_id = params.fetch("query_city_id").to_i
+    #@school_id = params.fetch("query_school_id").to_i
+    #@firm_id = params.fetch("query_firm_id").to_i
+    @cost = params.fetch("query_cost").to_f
+    @location = params.fetch("query_location")
+    @trans_method = params.fetch("query_trans_method")
+
     render({ :template => "user_facing_pages/results.html.erb" })
   end
   

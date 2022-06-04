@@ -6,16 +6,6 @@ Results
 Take a look!  Which one seems right?
 </h3>
 
-<% start_date = params.fetch("query_start_date") %>
-<% end_date = params.fetch("query_end_date") %>
-<% region_id = params.fetch("query_region_id") %>
-<% state_id = params.fetch("query_state_id") %>
-<% city_id = params.fetch("query_city_id") %>
-<% school_id = params.fetch("query_school_id") %>
-<% firm_id = params.fetch("query_firm_id") %>
-<% location = params.fetch("query_location") %>
-<% trans_method = params.fetch("query_trans_method") %>
-
 <% 
 # need to create a list of results in order to work the distance from piece... 
 # we will need to add <distance x> value to <listing x> hash so we can sort the listings by the distances
@@ -55,10 +45,7 @@ Take a look!  Which one seems right?
       City
     </th>
     <th>
-      School
-    </th>
-    <th>
-      Firm
+      Cost
     </th>
     <th>
       Close to...
@@ -66,28 +53,40 @@ Take a look!  Which one seems right?
   </tr>
     <tr>
     <td>
-      <%= start_date %>
+      <%= @start_date %>
     </td>
     <td>
-      <%= end_date %>
+      <%= @end_date %>
     </td>
     <td>
-      <%=Region.where( :id == region_id).first.name %>
+      <%= if @region_id == 0
+            region = ""
+          else
+            region = Region.where(:id => @region_id).first.name 
+          end
+      %>
     </td>
     <td>
-      <%=State.where( :id == state_id).first.name %>
+      <%= if @state_id == 0
+            state = ""
+          else
+            state = State.where(:id => @state_id).first.name
+          end
+      %> 
     </td>
     <td>
-      <%=City.where( :id == city_id).first.name %>
+      <%= if @city_id == 0
+            city = ""
+          else
+            city = City.where(:id => @city_id).first.name
+          end
+      %>
     </td>
     <td>
-      <%=School.where( :id == school_id).first.name %>
+      <%= @cost %>
     </td>
     <td>
-      <%=Firm.where( :id == firm_id).first.name %>
-    </td>
-    <td>
-      <%= location %>
+      <%= @location %>
     </td>
   </tr>
 </table>
@@ -129,21 +128,26 @@ Available Listings
     <th>
       Gender Preference
     </th>
+    <th>
+      Price per Week
+    </th>
   </tr>
 
 <% @list_of_listings.each do |listing| %>
 <%  
-    if listing.region_id == (region_id || nil) && 
-       listing.state_id == (state_id || nil) && 
-       listing.city_id == (city_id || nil) &&
-       listing.school_id == (school_id || nil) &&
-       listing.firm_id == (firm_id || nil) &&
+    if (@region_id == listing.region_id || @region_id == 0) &&
+       (@state_id == listing.state_id || @state_id == 0) &&
+       (@city_id == listing.city_id || @city_id == 0) &&
+       listing.rent < @cost
 %>
   <tr>
     <td>
       <a href = "/listings/<%=listing.id%>">
         <%=listing.name%> 
       </a>
+    </td>
+    <td>
+      <%=listing.owner.username %>
     </td>
     <td>
       <%=listing.address %>
@@ -155,7 +159,7 @@ Available Listings
       <%=listing.num_baths %>
     </td>
     <td>
-      <%=listing.num_rooms %> (need to make a Y/N value instead of number of rooms)
+      <%=listing.listing_type %>
     </td>
     <td>
       <% if listing.pets
@@ -180,10 +184,9 @@ Available Listings
       <%= if listing.smoking
             smoking = "Sure" 
           else
-            smoking = "No-no-no"
+            smoking = "No, sir"
           end
         %>  
-      <%= smoking %> 
     </td>
     <td>
       <%= if listing.gender_pref == 1
@@ -196,8 +199,11 @@ Available Listings
             gender = "Other"
           end
         %>   
-      <%= gender %> 
     </td>
+    <td>
+      <%=listing.rent%>
+    </td>
+
   </tr>
 <% end %>
 <% end %>
